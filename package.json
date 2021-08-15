@@ -1,0 +1,18 @@
+{
+  "name": "scripts",
+  "version": "1.0.0",
+  "description": "",
+  "main": "output/run-yh.js",
+  "scripts": {
+    "start": "tsc --outFile output/run-yh.js yhToAud.ts && node output/run-yh"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dayjs": "^1.10.6",
+    "fs": "0.0.1-security"
+  },
+  "devDependencies": {
+    "@types/node": "^16.4.13"
+  }
+}

@@ -1,0 +1,30 @@
+{
+    "rows": [
+        {
+            "id": "faff2ffe-10cc-4b65-9201-3dbcedbef6a1",
+            "ticker": "usdc",
+            "version": null,
+            "amount": "1234.56",
+            "createdAt": "2021-01-04T06:41:01.288Z",
+            "status": "SUCCESS",
+            "fee": "0",
+            "type": "SAVING_EARN",
+            "transactionId": "b708463d-f67c-4cb9-b193-1ae3ac4b5295",
+            "txHash": null
+        },
+        {
+            "id": "33f36b05-e6cb-4728-8907-28c1520ff101",
+            "ticker": "usdt",
+            "version": null,
+            "amount": "9876.54",
+            "createdAt": "2021-02-03T06:41:01.288Z",
+            "status": "SUCCESS",
+            "fee": "0",
+            "type": "SAVING_EARN",
+            "transactionId": "b22c69c5-e85d-4d3c-b54f-06acd9dc066f",
+            "txHash": null
+        }
+    ],
+    "currentPage": 0,
+    "total": 2
+}
