@@ -23,35 +23,6 @@ function parseUSDfile(usdToAudFile: string): Map<string, string> {
     return r;
 }
 
-
-// Legacy date file - From before I pulled from YH.
-function parseDate(badlyFormattedDate: string): string {
-    let [day,month,year]: any = badlyFormattedDate.split('/').slice(0,3);
-    if (year.length === 2) { 
-        year = '20'+year
-    };
-    if (day.length === 1) {
-        day = '0' + day;
-    }
-    if (month.length === 1) {
-        month = '0' + month;
-    }
-    // We manually do this in US dates because dayJs appears to be shit and i cbf fixing this.
-    const betterDate: string = `${month}-${day}-${year}`;
-    return dayjs(betterDate).format('MMM DD, YYYY');
-}
-
-function processDates() {
-    var dateFile = 'dates.txt';
-    const dates: string[] = readFile(dateFile);
-    const prices = parseUSDfile('usd-aud.txt');
-    const out: string[] = dates.map(l => {    
-        return l + "," + prices.get(parseDate(l));
-    });
-    writeOut('out.csv', out);
-}
-// processDates()
-
 interface YHJsonFormat {
     id: string;
     ticker: string;
@@ -75,7 +46,7 @@ function yhJsonToSheetsCsv(audHistory:string, inYHFile: string, outYHFile: strin
     // In: YH.json, AUD on date file.
     // Out: Interest, Date Acquired, Currency (e.g. USDC), Amount, FY, USD/AUD at Purchase, AUD (Cost Base for CGT), Sell Date, Sell Price, Brokerage (For Sale), USD/AUD at Sale, Brokerage (AUD), Discount Eligible, CGT
 
-    const prices = parseUSDfile('usd-aud.txt');
+    const prices = parseUSDfile(audHistory);
     const rawData = fs.readFileSync(inYHFile);
     const parsedYH: YHJsonFormat[] = JSON.parse(rawData).rows;
     const headerRow: string = "Interest, Date Acquired, Currency (e.g. USDC), Amount, FY, USD/AUD at Purchase, AUD (Cost Base for CGT), Sell Date, Sell Price, Brokerage (For Sale), USD/AUD at Sale, Brokerage (AUD), Discount Eligible, CGT";
